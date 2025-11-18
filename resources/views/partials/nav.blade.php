@@ -8,7 +8,7 @@
 					<li class="menu">
 						<a href="{{route('recipes.index')}}">Recepti</a>
 						<ul class="secondary">
-              <li>
+              				<li>
 								@auth
 									<a href="{{route('recipes.create')}}">Novi recept</a>
 								@else
@@ -25,7 +25,7 @@
 					<li class="user-nav">
 						@auth
 							<span class="user-greeting">
-								Pozdrav, <strong>{{ Auth::user()->name }}</strong>
+								Bok, <strong>{{ Auth::user()->name }}</strong>
 							</span>
 							<form action="{{ route('logout') }}" method="POST" class="logout-form">
 								@csrf

@@ -19,9 +19,9 @@
 							<li>
 								<img src="{{ asset('storage/'. $recipe->image) }}" style="width:180px; height:180px; object-fit:cover;" alt="">
 								<div>
-									<h1>{{$recipe->title}}</h1>
-									<span>Kreirano: {{$recipe->created_at}}</span>
-									<p>{{$recipe->description}}</p>
+									<h1>{{$recipe->title}}</h1> <br>
+{{-- 									<span>Kreirano: {{$recipe->created_at}}</span>
+ --}}									<p>{{$recipe->description}}</p>
 									<a href="{{route('recipes.show', $recipe->id)}}" class="more">Otvori recept</a>
 								</div>
 							</li>

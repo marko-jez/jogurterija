@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class RecipeController extends Controller
@@ -49,6 +50,7 @@ class RecipeController extends Controller
 
         $validated['slug'] = Str::slug($validated['title']);
         $validated['image'] = $imagePath;
+        $validated['user_id'] = auth()->id();
 
         Recipe::create($validated);
 
@@ -88,24 +90,34 @@ class RecipeController extends Controller
         ]);
 
         $recipe = Recipe::find($id);
-        $recipe->update([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'ingredients' => $validated['ingredients'],
-            'steps' => $validated['steps'],
-            'slug' => Str::slug($validated['title'])
-        ]);
 
-        return redirect()->route('recipes.index');
+        if ($recipe->user_id !== auth()->id()) {
+            abort(403, 'Nemaš dopuštenje.');
+        }
+
+        if($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('recipes', 'public');
+        }
+
+        $validated['slug'] = Str::slug($validated['title']);
+
+        $recipe->update($validated);
+
+        return redirect()->route('recipes.show', $recipe->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        Recipe::destroy($id);
+    public function destroy($id)
+{
+    $recipe = Recipe::findOrFail($id);
 
-        return redirect()->route('recipes.index');
+    if ($recipe->user_id !== auth()->id()) {
+        abort(403);
     }
+
+    $recipe->delete();
+    return redirect()->route('recipes.index');
+}
 }

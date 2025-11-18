@@ -33,6 +33,7 @@
           @error('steps')
             <p style="color: red">{{$message}}</p>    
           @enderror 
+          <input type="file" name="image" id="image">
           <input type="submit" id="submit" value="Dovrši">
       </form>
 

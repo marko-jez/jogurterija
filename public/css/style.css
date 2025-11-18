@@ -1300,6 +1300,10 @@ img {
 	margin-right: 4px;
 }
 
+#navigation .secondary li a {
+    padding: 8px 15px; /* gore-dolje 8px, lijevo-desno 15px */
+    
+}
 
 
 
