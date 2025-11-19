@@ -18,7 +18,7 @@
 						</ul>
 					</li>
 
-					<li><a href="{{route('product')}}">Naša ponuda</a></li>
+					<li><a href="{{route('products.index')}}">Naša ponuda</a></li>
 					<li><a href="{{route('about')}}">O nama</a></li>	
 					<li><a href="{{route('contact')}}">Kontakt</a></li>
 

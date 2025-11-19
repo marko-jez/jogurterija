@@ -1305,5 +1305,71 @@ img {
     
 }
 
+/* ---------------------- PROIZVODI GRID ---------------------- */
+
+.products-container {
+    padding: 30px 40px;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.product-card {
+    width: 250px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: #ffffff;
+    transition: 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-image.placeholder {
+    background: #eee;
+}
+
+.product-name {
+    font-size: 20px;
+    margin: 10px 0 5px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-add {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #b24ca1;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.product-add:hover {
+    background: #8f3d84;
+}
+
+
 
 
